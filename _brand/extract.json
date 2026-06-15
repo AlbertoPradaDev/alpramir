@@ -1,0 +1,40 @@
+{
+  "name": "Alpramir",
+  "category": "Cantautor y productor musical",
+  "location": "España",
+  "language": "es",
+  "tagline": "Pop y baladas latinas sobre el amor, la fe y el día a día",
+  "headline": "Melodías cercanas, letras con sentimiento",
+  "bio": "Alpramir es un cantautor y productor musical radicado en España. Sus canciones combinan influencias del pop, la balada latina y la música de autor, explorando temas como el amor, la amistad, la fe y las experiencias cotidianas. A través de composiciones originales y versiones reinterpretadas, busca conectar con los oyentes mediante melodías cercanas y letras cargadas de sentimiento.",
+  "colors": {
+    "background": "#000000",
+    "surface": "#0c0a08",
+    "text": "#f5f0e6",
+    "primary": "#c8a04a",
+    "accent": "#e0bf6f",
+    "muted": "#8a8175"
+  },
+  "fonts": {
+    "display": "Gloock",
+    "heading": "Raleway",
+    "body": "Roboto"
+  },
+  "nav": ["Inicio", "Acerca de", "Música", "Fotos"],
+  "sections": ["Hero", "Biografía", "Música", "Última canción", "Fotos", "Newsletter", "Footer"],
+  "cta": {
+    "primary": "Escuchar en Spotify",
+    "newsletter": "Únete a nuestra lista de correos para recibir las últimas noticias",
+    "newsletterButton": "Suscribirse"
+  },
+  "social": {
+    "spotify": "https://open.spotify.com/intl-es/artist/2xbT7Ezm2DEIG4FgFczsfF",
+    "youtube": "https://www.youtube.com/@Alpramir/releases",
+    "youtubeMusic": "https://music.youtube.com/search?q=alpramir",
+    "deezer": "https://www.deezer.com/en/artist/88218562",
+    "instagram": "https://www.instagram.com/alpramir/",
+    "tiktok": "https://www.tiktok.com/@alpramir"
+  },
+  "logo": "//images.zoogletools.com/s:bzglfiles/u/1313320/398d37ce2f6dca81e7edfbebc5b2510a45147423/original/logotipo-con-letras-color-oro-2.png",
+  "ogImage": "https://images.zoogletools.com/s:bzglfiles/u/1313320/8b17c987cdbedc0d4841c03fb22e93788124105c/original/alpramir-en-portugal.png",
+  "suggestedTheme": "Cinematic dark + warm gold — acoustic, intimate, spotlight-on-black"
+}
