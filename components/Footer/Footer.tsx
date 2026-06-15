@@ -4,7 +4,6 @@ import { SITE, NAV_LINKS } from '@/lib/site'
 import {
   SpotifyIcon,
   YouTubeIcon,
-  DeezerIcon,
   InstagramIcon,
   TikTokIcon,
 } from '@/components/ui/icons'
@@ -12,7 +11,6 @@ import {
 const SOCIALS = [
   { name: 'Spotify', href: SITE.social.spotify, Icon: SpotifyIcon },
   { name: 'YouTube', href: SITE.social.youtube, Icon: YouTubeIcon },
-  { name: 'Deezer', href: SITE.social.deezer, Icon: DeezerIcon },
   { name: 'Instagram', href: SITE.social.instagram, Icon: InstagramIcon },
   { name: 'TikTok', href: SITE.social.tiktok, Icon: TikTokIcon },
 ]
