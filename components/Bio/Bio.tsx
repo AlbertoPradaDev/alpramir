@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { gsap } from '@/lib/gsap'
 import Button from '@/components/ui/Button'
 import { SITE } from '@/lib/site'
+import portadaImg from '@/public/portada.jpeg'
 
 const THEMES = ['El amor', 'La fe', 'La amistad', 'El día a día']
 
@@ -43,7 +44,7 @@ export default function Bio() {
           className="relative aspect-[4/5] w-full overflow-hidden rounded-xl border border-line shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)] md:aspect-[4/5]"
         >
           <Image
-            src="/portada.jpeg"
+            src={portadaImg}
             alt="Alpramir, cantautor y productor musical"
             fill
             sizes="(max-width: 768px) 100vw, 45vw"
