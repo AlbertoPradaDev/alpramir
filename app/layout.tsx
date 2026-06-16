@@ -1,27 +1,12 @@
 import type { Metadata } from 'next'
-import { Gloock, Raleway, Roboto } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import './globals.css'
 import Nav from '@/components/Nav/Nav'
 import Cursor from '@/components/ui/Cursor'
 
-const gloock = Gloock({
-  weight: '400',
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-gloock',
-  display: 'swap',
-})
-
-const raleway = Raleway({
-  weight: ['400', '600', '700'],
-  subsets: ['latin'],
-  variable: '--font-raleway',
-  display: 'swap',
-})
-
-const roboto = Roboto({
-  weight: ['300', '400', '500'],
-  subsets: ['latin'],
-  variable: '--font-roboto',
+  variable: '--font-inter',
   display: 'swap',
 })
 
@@ -43,7 +28,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${gloock.variable} ${raleway.variable} ${roboto.variable} antialiased`}
+      className={`${inter.variable} antialiased`}
     >
       <body>
         <Cursor />

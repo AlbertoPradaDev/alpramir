@@ -42,7 +42,7 @@ export default function Music() {
           </span>
           <h2
             data-music-reveal
-            className="mt-4 font-display text-4xl leading-[1.05] text-text sm:text-5xl md:text-6xl"
+            className="mt-4 font-display font-bold text-4xl leading-[1.05] text-text sm:text-5xl md:text-6xl"
           >
             Escúchale en tu <span className="text-gold-gradient">plataforma favorita</span>
           </h2>

@@ -56,8 +56,10 @@ export default function Hero() {
         />
       </div>
 
-      {/* Flat mobile scrim for legibility — no gradient, no vignette */}
-      <div className="pointer-events-none absolute inset-0 bg-primary/40 md:bg-transparent" />
+      {/* Mobile: bottom-up gradient for text legibility */}
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgba(5,4,3,0.96)_0%,rgba(5,4,3,0.5)_40%,rgba(5,4,3,0.1)_70%,transparent_100%)] md:hidden" />
+      {/* Desktop: left-to-right directional gradient */}
+      <div className="pointer-events-none absolute inset-0 hidden md:block bg-[linear-gradient(105deg,rgba(5,4,3,0.92)_0%,rgba(5,4,3,0.6)_40%,rgba(5,4,3,0.15)_70%,transparent_100%)]" />
 
       <div className="absolute inset-0 z-10 flex items-center">
         <HeroText />

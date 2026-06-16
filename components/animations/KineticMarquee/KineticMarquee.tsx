@@ -73,7 +73,7 @@ export default function KineticMarquee({
 
 function Item({ label }: { label: string }) {
   return (
-    <span className="inline-flex shrink-0 items-center px-6 font-display text-2xl text-text/85 sm:text-3xl md:px-10 md:text-5xl">
+    <span className="inline-flex shrink-0 items-center px-6 font-display font-semibold text-2xl text-text/70 sm:text-3xl md:px-10 md:text-5xl">
       {label}
       <span className="mx-6 inline-block h-2 w-2 rotate-45 bg-accent md:mx-10" />
     </span>

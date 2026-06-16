@@ -38,7 +38,7 @@ export default function Newsletter() {
         </span>
         <h2
           data-news-reveal
-          className="mx-auto mt-4 max-w-xl font-display text-3xl leading-[1.1] text-text sm:text-4xl md:text-5xl"
+          className="mx-auto mt-4 max-w-xl font-display font-bold text-3xl leading-[1.1] text-text sm:text-4xl md:text-5xl"
         >
           Únete a la lista y recibe las <span className="text-gold-gradient">últimas novedades</span>
         </h2>

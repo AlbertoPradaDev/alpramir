@@ -1,14 +1,12 @@
 'use client'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { gsap } from '@/lib/gsap'
 import { NAV_LINKS, SITE } from '@/lib/site'
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const drawerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -17,14 +15,6 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => {
-    const drawer = drawerRef.current
-    if (!drawer) return
-    const ctx = gsap.context(() => {
-      gsap.to(drawer, { xPercent: open ? 0 : 100, duration: 0.5, ease: 'power3.out' })
-    })
-    return () => ctx.revert()
-  }, [open])
 
   return (
     <header
@@ -62,14 +52,14 @@ export default function Nav() {
 
         <button
           type="button"
-          aria-label="Abrir menú"
+          aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
           className="flex h-11 w-11 flex-col items-center justify-center gap-1.5 md:hidden"
         >
-          <span className={`block h-0.5 w-6 bg-text transition-transform duration-300 ${open ? 'translate-y-2 rotate-45' : ''}`} />
-          <span className={`block h-0.5 w-6 bg-text transition-opacity duration-300 ${open ? 'opacity-0' : ''}`} />
-          <span className={`block h-0.5 w-6 bg-text transition-transform duration-300 ${open ? '-translate-y-2 -rotate-45' : ''}`} />
+          <span className={`block h-0.5 w-6 bg-text transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${open ? 'translate-y-2 rotate-45' : ''}`} />
+          <span className={`block h-0.5 w-6 bg-text transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${open ? 'scale-x-0 opacity-0' : ''}`} />
+          <span className={`block h-0.5 w-6 bg-text transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${open ? '-translate-y-2 -rotate-45' : ''}`} />
         </button>
       </nav>
 
@@ -82,15 +72,16 @@ export default function Nav() {
       />
 
       <div
-        ref={drawerRef}
-        className="fixed right-0 top-0 z-50 flex h-[100dvh] w-3/4 max-w-xs translate-x-full flex-col gap-2 border-l border-line bg-primary p-8 pt-24 md:hidden"
+        className={`fixed right-0 top-0 z-50 flex h-[100dvh] w-3/4 max-w-xs flex-col gap-2 border-l border-line bg-secondary p-8 pt-24 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:hidden ${
+          open ? 'translate-x-0' : 'translate-x-full'
+        }`}
       >
         {NAV_LINKS.map((l) => (
           <Link
             key={l.href}
             href={l.href}
             onClick={() => setOpen(false)}
-            className="flex min-h-[44px] items-center font-display text-2xl tracking-wide text-text"
+            className="flex min-h-[44px] items-center font-display font-semibold text-2xl tracking-wide text-text"
           >
             {l.label}
           </Link>

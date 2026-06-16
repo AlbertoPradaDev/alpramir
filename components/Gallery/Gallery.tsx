@@ -4,9 +4,9 @@ import Image from 'next/image'
 import { gsap } from '@/lib/gsap'
 
 const PHOTOS = [
-  { src: '/img-1.jpeg', alt: 'Evento musical al aire libre', span: 'md:col-span-5 md:row-span-2 aspect-[4/5]' },
-  { src: '/img-2.jpeg', alt: 'Alpramir en el estudio', span: 'md:col-span-7 aspect-[16/9]' },
-  { src: '/img-3.jpeg', alt: 'Produciendo musica activamente', span: 'md:col-span-7 aspect-[16/10]' },
+  { src: '/img-1.jpeg', alt: 'Evento musical al aire libre', span: 'md:col-span-5 md:row-span-2 aspect-[4/5]', sizes: '(max-width: 768px) 100vw, 42vw' },
+  { src: '/img-2.jpeg', alt: 'Alpramir en el estudio', span: 'md:col-span-7 aspect-[16/9]', sizes: '(max-width: 768px) 100vw, 58vw' },
+  { src: '/img-3.jpeg', alt: 'Produciendo musica activamente', span: 'md:col-span-7 aspect-[16/10]', sizes: '(max-width: 768px) 100vw, 58vw' },
 ]
 
 export default function Gallery() {
@@ -35,7 +35,7 @@ export default function Gallery() {
       <div className="mx-auto max-w-6xl">
         <div className="mb-12 max-w-2xl">
           <span className="eyebrow">Fotos</span>
-          <h2 className="mt-4 font-display text-4xl leading-[1.05] text-text sm:text-5xl md:text-6xl">
+          <h2 className="mt-4 font-display font-bold text-4xl leading-[1.05] text-text sm:text-5xl md:text-6xl">
             Detrás de la <span className="text-gold-gradient">música</span>
           </h2>
         </div>
@@ -51,7 +51,7 @@ export default function Gallery() {
                 src={p.src}
                 alt={p.alt}
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes={p.sizes}
                 className="object-cover transition-transform duration-700 ease-cinema group-hover:scale-105"
               />
               <figcaption className="media-pill absolute bottom-3 left-3 rounded-md px-3 py-1 text-[0.7rem] uppercase tracking-[0.16em] text-text/80">

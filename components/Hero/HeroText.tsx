@@ -52,14 +52,14 @@ export default function HeroText() {
     >
       <span
         data-hero-fade
-        className="media-pill eyebrow mb-5 rounded-md px-4 py-1.5"
+        className="eyebrow mb-5 drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]"
       >
         {SITE.role} · {SITE.location}
       </span>
 
       <h1
         ref={titleRef}
-        className="hero-title font-display text-[19vw] leading-[0.9] sm:text-7xl md:text-8xl lg:text-[9rem]"
+        className="hero-title font-display font-extrabold text-[19vw] leading-[0.9] sm:text-7xl md:text-8xl lg:text-[9rem]"
         style={{ perspective: '600px' }}
       >
         {SITE.name}
@@ -67,7 +67,7 @@ export default function HeroText() {
 
       <p
         data-hero-fade
-        className="media-pill mt-6 max-w-[20rem] rounded-lg px-4 py-2.5 font-heading text-sm font-semibold leading-relaxed text-text/90 sm:max-w-md md:text-base"
+        className="hero-shadow mt-6 max-w-[20rem] font-heading text-sm font-medium leading-relaxed text-text/85 sm:max-w-md md:text-base"
       >
         {SITE.tagline}
       </p>
@@ -86,7 +86,7 @@ export default function HeroText() {
 
       <span
         data-hero-fade
-        className="media-pill mt-10 hidden items-center gap-2 rounded-md px-3.5 py-1.5 text-[0.7rem] uppercase tracking-[0.2em] text-text/70 md:inline-flex"
+        className="mt-10 hidden items-center gap-2 text-[0.68rem] uppercase tracking-[0.25em] text-text/50 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] md:inline-flex"
       >
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="animate-bounce">
           <path d="M12 5v14M19 12l-7 7-7-7" />

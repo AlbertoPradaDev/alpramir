@@ -1,21 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand tokens — extracted from alpramir.com (dark + warm gold) */
-  --color-primary: #050403;       /* page background — deep black */
-  --color-secondary: #0e0b08;     /* raised surfaces / cards */
-  --color-text: #f3ecdd;          /* high-contrast warm white */
-  --color-accent: #c8a04a;        /* signature gold */
-  --color-muted: #8a8175;         /* captions / metadata ONLY */
-
-  /* Extra brand shades (used by gradients & hovers) */
+  /* Brand color tokens */
+  --color-primary: #050403;
+  --color-secondary: #0e0b08;
+  --color-text: #f3ecdd;
+  --color-accent: #c8a04a;
+  --color-muted: #8a8175;
   --color-gold-bright: #e6c477;
   --color-gold-deep: #a07e34;
   --color-line: rgba(200, 160, 74, 0.18);
 
-  --font-display: var(--font-gloock);
-  --font-heading: var(--font-raleway);
-  --font-body: var(--font-roboto);
+  /* Single Inter variable font for all roles */
+  --font-display: var(--font-inter);
+  --font-heading: var(--font-inter);
+  --font-body: var(--font-inter);
 }
 
 html {
@@ -56,7 +55,7 @@ body {
 
 /* Section eyebrow label */
 .eyebrow {
-  font-family: var(--font-heading), sans-serif;
+  font-family: var(--font-inter), sans-serif;
   font-weight: 600;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -79,8 +78,7 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 3px 14px rgba(0, 0, 0, 0.9))
-    drop-shadow(0 1px 4px rgba(0, 0, 0, 0.8));
+  filter: drop-shadow(0 3px 14px rgba(0, 0, 0, 0.9)) drop-shadow(0 1px 4px rgba(0, 0, 0, 0.8));
 }
 
 /* Thin gold hairline divider */
@@ -95,5 +93,7 @@ body {
 }
 
 @media (hover: none) {
-  html { scroll-behavior: auto; }
+  html {
+    scroll-behavior: auto;
+  }
 }
