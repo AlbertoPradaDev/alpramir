@@ -66,6 +66,7 @@ export default function StaggeredNav() {
 
       {/* Drawer */}
       <aside
+        inert={!open}
         className={`fixed right-0 top-0 z-50 h-[100dvh] w-[min(420px,82vw)] bg-ink px-[8%] pt-[12vh] text-paper transition-transform duration-[600ms] ease-[cubic-bezier(0.7,0,0.2,1)] ${
           open ? 'translate-x-0' : 'translate-x-full'
         }`}
