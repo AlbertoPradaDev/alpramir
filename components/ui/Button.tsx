@@ -9,12 +9,11 @@ const SIZES: Record<Size, string> = {
   md: 'text-sm px-7 min-h-[48px] md:min-h-[52px]',
 }
 
-// Explicit color on every variant: dark text on gold, warm-white on outline.
 const VARIANTS: Record<Variant, string> = {
   primary:
-    'bg-accent text-[#1a1206] hover:bg-gold-bright active:bg-gold-deep shadow-[0_8px_32px_-8px_rgba(200,160,74,0.5)] hover:shadow-[0_8px_32px_-4px_rgba(200,160,74,0.7)]',
+    'bg-ink text-paper hover:bg-ink/85 active:bg-ink/75',
   outline:
-    'border border-[rgba(230,196,119,0.45)] text-text hover:border-accent hover:bg-[rgba(200,160,74,0.08)] active:bg-[rgba(200,160,74,0.14)]',
+    'border border-ink/40 text-ink hover:bg-ink hover:text-paper active:bg-ink/90',
 }
 
 interface ButtonProps {
@@ -35,7 +34,7 @@ export default function Button({
   className = '',
 }: ButtonProps) {
   const base =
-    'inline-flex items-center justify-center gap-2 rounded-xl font-heading font-semibold uppercase tracking-[0.16em] transition-all duration-300 ease-cinema select-none'
+    'inline-flex items-center justify-center gap-2 rounded-full font-sans font-semibold uppercase tracking-[0.16em] transition-colors duration-300 ease-cinema select-none'
   const cls = `${base} ${SIZES[size]} ${VARIANTS[variant]} ${className}`
 
   if (external) {

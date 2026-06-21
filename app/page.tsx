@@ -1,23 +1,21 @@
-import Hero from '@/components/Hero/Hero'
+import SpotlightHero from '@/components/Hero/SpotlightHero'
+import StickyWords from '@/components/StickyWords/StickyWords'
 import Bio from '@/components/Bio/Bio'
 import Music from '@/components/Music/Music'
 import LatestSong from '@/components/LatestSong/LatestSong'
-import Gallery from '@/components/Gallery/Gallery'
+import HorizontalGallery from '@/components/Gallery/HorizontalGallery'
 import Newsletter from '@/components/Newsletter/Newsletter'
 import Footer from '@/components/Footer/Footer'
-import KineticMarquee from '@/components/animations/KineticMarquee/KineticMarquee'
-
-const MARQUEE = ['Pop', 'Balada latina', 'Música de autor', 'Amor', 'Fe', 'El día a día']
 
 export default function Home() {
   return (
     <main>
-      <Hero />
-      <KineticMarquee items={MARQUEE} />
+      <SpotlightHero />
+      <StickyWords />
       <Bio />
       <Music />
       <LatestSong />
-      <Gallery />
+      <HorizontalGallery />
       <Newsletter />
       <Footer />
     </main>

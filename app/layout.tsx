@@ -1,8 +1,13 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Fraunces, Inter } from 'next/font/google'
 import './globals.css'
-import Nav from '@/components/Nav/Nav'
-import Cursor from '@/components/ui/Cursor'
+import StaggeredNav from '@/components/Nav/StaggeredNav'
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-fraunces',
+  display: 'swap',
+})
 
 const inter = Inter({
   subsets: ['latin'],
@@ -28,11 +33,10 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${inter.variable} antialiased`}
+      className={`${fraunces.variable} ${inter.variable} antialiased`}
     >
       <body>
-        <Cursor />
-        <Nav />
+        <StaggeredNav />
         {children}
       </body>
     </html>

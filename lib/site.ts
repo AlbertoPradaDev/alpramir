@@ -4,7 +4,7 @@ export const SITE = {
   role: 'Cantautor y productor musical',
   location: 'España',
   tagline: 'Pop y baladas latinas sobre el amor, la fe y el día a día',
-  bio: 'Alpramir es un cantautor y productor musical radicado en España. Sus canciones combinan influencias del pop, la balada latina y la música de autor, explorando temas como el amor, la amistad, la fe y las experiencias cotidianas. A través de composiciones originales y versiones reinterpretadas, busca conectar con los oyentes mediante melodías cercanas y letras cargadas de sentimiento.',
+  bio: 'Soy cantautor y productor musical, radicado en España. Mis canciones combinan influencias del pop, la balada latina y la música de autor, y exploran temas como el amor, la amistad, la fe y las experiencias del día a día. A través de composiciones originales y versiones reinterpretadas, busco conectar contigo con melodías cercanas y letras cargadas de sentimiento.',
   spotifyArtistId: '2xbT7Ezm2DEIG4FgFczsfF',
   social: {
     spotify: 'https://open.spotify.com/intl-es/artist/2xbT7Ezm2DEIG4FgFczsfF',

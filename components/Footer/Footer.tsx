@@ -1,12 +1,6 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { SITE, NAV_LINKS } from '@/lib/site'
-import {
-  SpotifyIcon,
-  YouTubeIcon,
-  InstagramIcon,
-  TikTokIcon,
-} from '@/components/ui/icons'
+import { SpotifyIcon, YouTubeIcon, InstagramIcon, TikTokIcon } from '@/components/ui/icons'
 
 const SOCIALS = [
   { name: 'Spotify', href: SITE.social.spotify, Icon: SpotifyIcon },
@@ -17,43 +11,34 @@ const SOCIALS = [
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-line bg-secondary px-5 pt-16 pb-10 sm:px-8 md:px-16">
+    <footer className="bg-ink px-5 pt-20 pb-10 text-paper sm:px-8 md:px-16">
       <div className="mx-auto max-w-6xl">
-        <div className="flex flex-col items-center gap-10 text-center md:flex-row md:items-start md:justify-between md:text-left">
-          {/* Brand */}
-          <div className="flex flex-col items-center md:items-start">
-            <div className="relative h-16 w-48">
-              <Image
-                src="/logo.png"
-                alt="Alpramir"
-                fill
-                sizes="192px"
-                className="object-contain object-center md:object-left"
-              />
-            </div>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-text/60">
-              {SITE.role} en {SITE.location}. {SITE.tagline}.
+        <div className="flex flex-col gap-12 md:flex-row md:items-start md:justify-between">
+          <div>
+            <span className="font-display text-4xl font-medium tracking-tight md:text-5xl">
+              {SITE.name}
+            </span>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-paper/55">
+              Soy {SITE.role.toLowerCase()} en {SITE.location}. {SITE.tagline}.
             </p>
           </div>
 
-          {/* Nav */}
-          <nav className="flex flex-col items-center gap-3 md:items-start">
-            <span className="eyebrow mb-1">Navegación</span>
+          <nav className="flex flex-col gap-3">
+            <span className="eyebrow !text-paper/50">Navegación</span>
             {NAV_LINKS.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
-                className="font-heading text-sm font-semibold text-text/75 transition-colors hover:text-accent"
+                className="font-sans text-sm font-semibold text-paper/75 transition-colors hover:text-paper"
               >
                 {l.label}
               </Link>
             ))}
           </nav>
 
-          {/* Social */}
-          <div className="flex flex-col items-center gap-4 md:items-start">
-            <span className="eyebrow mb-1">Síguele</span>
-            <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex flex-col gap-4">
+            <span className="eyebrow !text-paper/50">Sígueme</span>
+            <div className="flex flex-wrap gap-3">
               {SOCIALS.map(({ name, href, Icon }) => (
                 <a
                   key={name}
@@ -61,7 +46,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={name}
-                  className="flex h-11 w-11 items-center justify-center rounded-lg border border-line text-text/70 transition-all duration-300 ease-cinema hover:border-accent hover:text-accent hover:bg-[rgba(200,160,74,0.08)]"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-line-invert text-paper/70 transition-colors duration-300 ease-cinema hover:border-paper hover:text-paper"
                 >
                   <Icon width={18} height={18} />
                 </a>
@@ -70,8 +55,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="gold-rule mt-12 opacity-40" />
-        <p className="mt-6 text-center text-xs text-muted">
+        <div className="mt-14 h-px w-full bg-line-invert" />
+        <p className="mt-6 text-xs text-paper/45">
           © {new Date().getFullYear()} {SITE.name}. Todos los derechos reservados.
         </p>
       </div>

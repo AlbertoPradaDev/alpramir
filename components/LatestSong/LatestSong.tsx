@@ -1,67 +1,32 @@
-'use client'
-import { useEffect, useRef } from 'react'
-import { gsap } from '@/lib/gsap'
 import Button from '@/components/ui/Button'
+import SectionReveal from '@/components/ui/SectionReveal'
 import { SITE } from '@/lib/site'
 
 const YT_ID = 'Cs0WW_g7A6U'
 
 export default function LatestSong() {
-  const rootRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from('[data-song-reveal]', {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: rootRef.current, start: 'top 72%' },
-      })
-      gsap.from('[data-song-frame]', {
-        clipPath: 'inset(0 0 0 100%)',
-        duration: 1.1,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: rootRef.current, start: 'top 65%' },
-      })
-    }, rootRef)
-    return () => ctx.revert()
-  }, [])
-
   return (
-    <section
-      ref={rootRef}
-      className="relative overflow-hidden bg-secondary px-5 py-20 sm:px-8 md:px-16 md:py-32"
-    >
+    <section className="bg-paper px-5 py-24 sm:px-8 md:px-16 md:py-36">
       <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[5fr_7fr] md:gap-16">
         <div>
-          <span data-song-reveal className="eyebrow">
-            Último lanzamiento
-          </span>
-          <h2
-            data-song-reveal
-            className="mt-4 font-display font-bold text-4xl leading-[1.05] text-text sm:text-5xl md:text-6xl"
-          >
-            Su <span className="text-gold-gradient">última canción</span>
+          <span className="eyebrow">Último lanzamiento</span>
+          <h2 className="mt-4 font-display text-4xl font-medium leading-[1.02] text-ink sm:text-5xl md:text-6xl">
+            Mi <span className="outline-type">última canción</span>
           </h2>
-          <p
-            data-song-reveal
-            className="mt-6 max-w-md text-base leading-relaxed text-text/75 md:text-lg"
-          >
-            Composiciones originales y versiones reinterpretadas que buscan conectar
-            con quien escucha. Dale al play y déjate llevar.
+          <p className="mt-6 max-w-md text-base leading-relaxed text-ink/70 md:text-lg">
+            Composiciones originales y versiones reinterpretadas con las que busco
+            conectar contigo. Dale al play y déjate llevar.
           </p>
-          <div data-song-reveal className="mt-8">
+          <div className="mt-8">
             <Button href={SITE.social.youtube} variant="primary" external>
               Ver más en YouTube
             </Button>
           </div>
         </div>
 
-        <div
-          data-song-frame
-          className="relative aspect-video w-full overflow-hidden rounded-xl border border-line shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)]"
+        <SectionReveal
+          variant="mask-slide"
+          className="relative aspect-video w-full overflow-hidden rounded-sm border border-line-invert bg-ink"
         >
           <iframe
             title="Última canción de Alpramir en YouTube"
@@ -71,7 +36,7 @@ export default function LatestSong() {
             allowFullScreen
             loading="lazy"
           />
-        </div>
+        </SectionReveal>
       </div>
     </section>
   )
