@@ -52,7 +52,7 @@ export default function SpotlightHero() {
               Escuchar en Spotify
             </Button>
             <Button href="#biografia" variant="outline" className="!border-paper/40 !text-paper hover:!bg-paper hover:!text-ink">
-              Conoce su historia
+              Conoce mi historia
             </Button>
           </div>
         </div>

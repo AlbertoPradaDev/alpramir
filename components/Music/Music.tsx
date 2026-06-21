@@ -16,7 +16,7 @@ export default function Music() {
         <div data-reveal className="max-w-2xl">
           <span className="eyebrow">Música</span>
           <h2 className="mt-4 font-display text-4xl font-medium leading-[1.02] text-ink sm:text-5xl md:text-6xl">
-            Escúchale en tu <span className="outline-type">plataforma favorita</span>
+            Escúchame en tu <span className="outline-type">plataforma favorita</span>
           </h2>
         </div>
 

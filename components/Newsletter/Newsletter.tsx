@@ -23,7 +23,7 @@ export default function Newsletter() {
           Únete a la lista y recibe las <span className="outline-type">últimas novedades</span>
         </h2>
         <p className="mx-auto mt-4 max-w-md text-sm text-ink/60 md:text-base">
-          Nuevos lanzamientos, conciertos y noticias de Alpramir, directo a tu correo.
+          Mis nuevos lanzamientos, conciertos y novedades, directo a tu correo.
         </p>
 
         {sent ? (
@@ -31,7 +31,7 @@ export default function Newsletter() {
             className="mx-auto mt-8 inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-3 font-sans text-sm font-semibold text-ink"
             role="status"
           >
-            ¡Gracias! Te avisaremos de las novedades.
+            ¡Gracias! Te avisaré de las novedades.
           </p>
         ) : (
           <form onSubmit={onSubmit} className="mx-auto mt-8 flex w-full max-w-md flex-col gap-3 sm:flex-row">

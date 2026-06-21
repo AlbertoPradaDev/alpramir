@@ -47,7 +47,7 @@ export default function Bio() {
 
           <div className="mt-9">
             <Button href="#musica" variant="outline">
-              Escuchar su música
+              Escuchar mi música
             </Button>
           </div>
         </div>

@@ -4,9 +4,9 @@ import Image from 'next/image'
 import { useMediaQuery } from '@/lib/useMediaQuery'
 
 const PHOTOS = [
-  { src: '/img-1.jpeg', alt: 'Evento musical al aire libre' },
-  { src: '/img-2.jpeg', alt: 'Alpramir en el estudio' },
-  { src: '/img-3.jpeg', alt: 'Produciendo música activamente' },
+  { src: '/img-1.jpeg', alt: 'En un evento al aire libre' },
+  { src: '/img-2.jpeg', alt: 'En el estudio' },
+  { src: '/img-3.jpeg', alt: 'Produciendo música' },
 ]
 
 export default function HorizontalGallery() {

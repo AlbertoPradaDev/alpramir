@@ -19,7 +19,7 @@ export default function Footer() {
               {SITE.name}
             </span>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-paper/55">
-              {SITE.role} en {SITE.location}. {SITE.tagline}.
+              Soy {SITE.role.toLowerCase()} en {SITE.location}. {SITE.tagline}.
             </p>
           </div>
 
@@ -37,7 +37,7 @@ export default function Footer() {
           </nav>
 
           <div className="flex flex-col gap-4">
-            <span className="eyebrow !text-paper/50">Síguele</span>
+            <span className="eyebrow !text-paper/50">Sígueme</span>
             <div className="flex flex-wrap gap-3">
               {SOCIALS.map(({ name, href, Icon }) => (
                 <a

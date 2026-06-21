@@ -11,11 +11,11 @@ export default function LatestSong() {
         <div>
           <span className="eyebrow">Último lanzamiento</span>
           <h2 className="mt-4 font-display text-4xl font-medium leading-[1.02] text-ink sm:text-5xl md:text-6xl">
-            Su <span className="outline-type">última canción</span>
+            Mi <span className="outline-type">última canción</span>
           </h2>
           <p className="mt-6 max-w-md text-base leading-relaxed text-ink/70 md:text-lg">
-            Composiciones originales y versiones reinterpretadas que buscan conectar
-            con quien escucha. Dale al play y déjate llevar.
+            Composiciones originales y versiones reinterpretadas con las que busco
+            conectar contigo. Dale al play y déjate llevar.
           </p>
           <div className="mt-8">
             <Button href={SITE.social.youtube} variant="primary" external>
