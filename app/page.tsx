@@ -1,4 +1,4 @@
-import Hero from '@/components/Hero/Hero'
+import SpotlightHero from '@/components/Hero/SpotlightHero'
 import Bio from '@/components/Bio/Bio'
 import Music from '@/components/Music/Music'
 import LatestSong from '@/components/LatestSong/LatestSong'
@@ -12,7 +12,7 @@ const MARQUEE = ['Pop', 'Balada latina', 'Música de autor', 'Amor', 'Fe', 'El d
 export default function Home() {
   return (
     <main>
-      <Hero />
+      <SpotlightHero />
       <KineticMarquee items={MARQUEE} />
       <Bio />
       <Music />
