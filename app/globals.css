@@ -67,7 +67,7 @@ body {
 }
 .sticky-words .head {
   font-family: var(--font-display), Georgia, serif;
-  font-size: clamp(2.2rem, 7vw, 4.6rem);
+  font-size: clamp(1.6rem, 5vw, 4.2rem);
   font-weight: 600;
   line-height: 1.2;
   position: sticky;

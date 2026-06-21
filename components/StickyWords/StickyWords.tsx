@@ -8,7 +8,7 @@ export default function StickyWords() {
       <header className="head">
         <div className="row">
           <h2 className="lead">
-            <span aria-hidden="true">Alpramir&nbsp;canta&nbsp;sobre&nbsp;</span>
+            <span aria-hidden="true">Canta&nbsp;sobre&nbsp;</span>
             <span className="sr-only">Alpramir canta sobre el amor.</span>
           </h2>
           <ul aria-hidden="true">
