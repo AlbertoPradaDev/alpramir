@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useRef } from 'react'
+import Image from 'next/image'
 import { gsap } from '@/lib/gsap'
 import Button from '@/components/ui/Button'
 import { SITE } from '@/lib/site'
@@ -31,13 +32,32 @@ export default function SpotlightHero() {
       id="inicio"
       className="relative h-[100dvh] w-full overflow-hidden bg-ink text-paper"
     >
+      {/* Responsive background photo, revealed by the spotlight. */}
+      <Image
+        src="/hero-mobile.webp"
+        alt="Alpramir"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center grayscale md:hidden"
+      />
+      <Image
+        src="/hero-desktop.webp"
+        alt="Alpramir"
+        fill
+        priority
+        sizes="100vw"
+        className="hidden object-cover object-center grayscale md:block"
+      />
+
+      {/* Dark scrim: keeps the stage feel and the white caption legible over the photo. */}
       <div
         className="absolute inset-0"
-        style={{ background: 'radial-gradient(120% 120% at 50% 42%, #1a1a1a 0%, #0a0a0a 60%)' }}
+        style={{ background: 'radial-gradient(120% 120% at 50% 42%, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.92) 72%)' }}
       />
 
       <div className="absolute inset-0 z-10 grid place-items-center px-6 text-center">
-        <div>
+        <div style={{ textShadow: '0 2px 24px rgba(0,0,0,0.55)' }}>
           <p className="eyebrow !text-paper/60">
             {SITE.role} · {SITE.location}
           </p>
