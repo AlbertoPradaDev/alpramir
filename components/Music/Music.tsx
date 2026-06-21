@@ -1,7 +1,4 @@
-'use client'
-import { useEffect, useRef } from 'react'
-import { gsap } from '@/lib/gsap'
-import { SpotlightGrid, SpotCard } from '@/components/animations/SpotlightGrid/SpotlightGrid'
+import SectionReveal from '@/components/ui/SectionReveal'
 import { SITE } from '@/lib/site'
 import { SpotifyIcon, YouTubeIcon, YouTubeMusicIcon, DeezerIcon } from '@/components/ui/icons'
 
@@ -13,99 +10,51 @@ const PLATFORMS = [
 ]
 
 export default function Music() {
-  const rootRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from('[data-music-reveal]', {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: rootRef.current, start: 'top 70%' },
-      })
-    }, rootRef)
-    return () => ctx.revert()
-  }, [])
-
   return (
-    <section
-      id="musica"
-      ref={rootRef}
-      className="relative bg-primary px-5 py-20 sm:px-8 md:px-16 md:py-32"
-    >
-      <div className="mx-auto max-w-6xl">
-        <div className="max-w-2xl">
-          <span data-music-reveal className="eyebrow">
-            Música
-          </span>
-          <h2
-            data-music-reveal
-            className="mt-4 font-display font-bold text-4xl leading-[1.05] text-text sm:text-5xl md:text-6xl"
-          >
-            Escúchale en tu <span className="text-gold-gradient">plataforma favorita</span>
+    <section id="musica" className="bg-paper px-5 py-24 sm:px-8 md:px-16 md:py-36">
+      <SectionReveal variant="fade-rise" className="mx-auto max-w-6xl">
+        <div data-reveal className="max-w-2xl">
+          <span className="eyebrow">Música</span>
+          <h2 className="mt-4 font-display text-4xl font-medium leading-[1.02] text-ink sm:text-5xl md:text-6xl">
+            Escúchale en tu <span className="outline-type">plataforma favorita</span>
           </h2>
         </div>
 
         <div className="mt-12 grid items-stretch gap-8 lg:grid-cols-[7fr_5fr]">
-          {/* Spotify player */}
-          <div
-            data-music-reveal
-            className="overflow-hidden rounded-xl border border-line bg-secondary p-2 shadow-[0_30px_80px_-50px_rgba(0,0,0,0.9)]"
-          >
+          <div data-reveal className="overflow-hidden rounded-sm border border-line-invert bg-ink p-2">
             <iframe
               title="Reproductor de Spotify de Alpramir"
               src={`https://open.spotify.com/embed/artist/${SITE.spotifyArtistId}?utm_source=generator&theme=0`}
               width="100%"
               height="100%"
-              style={{ minHeight: 420, borderRadius: 8 }}
+              style={{ minHeight: 420, borderRadius: 4 }}
               frameBorder={0}
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               loading="lazy"
             />
           </div>
 
-          {/* Platform cards */}
-          <div data-music-reveal>
-            <SpotlightGrid className="h-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-1">
-              {PLATFORMS.map(({ name, desc, href, Icon }) => (
-                <SpotCard key={name} href={href}>
-                  <div className="flex items-start gap-4">
-                    <span className="mt-0.5 text-accent transition-transform duration-300 group-hover:scale-110">
-                      <Icon />
-                    </span>
-                    <div>
-                      <h3 className="flex items-center gap-2 font-heading text-lg font-bold text-text">
-                        {name}
-                        <ArrowIcon />
-                      </h3>
-                      <p className="mt-1 text-sm leading-relaxed text-text/60">{desc}</p>
-                    </div>
-                  </div>
-                </SpotCard>
-              ))}
-            </SpotlightGrid>
-          </div>
+          <ul data-reveal className="flex flex-col divide-y divide-line border-y border-line">
+            {PLATFORMS.map(({ name, desc, href, Icon }) => (
+              <li key={name}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-4 py-5 transition-colors hover:bg-ink/[0.03]"
+                >
+                  <span className="text-ink"><Icon /></span>
+                  <span className="flex-1">
+                    <span className="block font-sans text-base font-semibold text-ink">{name}</span>
+                    <span className="block text-sm text-ink/55">{desc}</span>
+                  </span>
+                  <span className="text-ink/40 transition-transform duration-300 ease-cinema group-hover:translate-x-1" aria-hidden="true">↗</span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
+      </SectionReveal>
     </section>
-  )
-}
-
-function ArrowIcon() {
-  return (
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      className="text-accent opacity-0 -translate-x-1 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-      aria-hidden="true"
-    >
-      <path d="M7 17L17 7M17 7H8M17 7v9" />
-    </svg>
   )
 }
