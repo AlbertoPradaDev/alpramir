@@ -6,7 +6,7 @@ const YT_ID = 'Cs0WW_g7A6U'
 
 export default function LatestSong() {
   return (
-    <section className="bg-paper px-5 py-24 sm:px-8 md:px-16 md:py-36">
+    <section className="bg-paper px-4 py-8 md:px-8 md:py-16">
       <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[5fr_7fr] md:gap-16">
         <div>
           <span className="eyebrow">Último lanzamiento</span>

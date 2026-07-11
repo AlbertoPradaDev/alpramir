@@ -8,7 +8,7 @@ const THEMES = ['El amor', 'La fe', 'La amistad', 'El día a día']
 
 export default function Bio() {
   return (
-    <section id="biografia" className="bg-paper px-5 py-24 sm:px-8 md:px-16 md:py-36">
+    <section id="biografia" className="bg-paper px-4 py-8 md:px-8 md:py-16">
       <SectionReveal
         variant="clip-wipe"
         className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[5fr_6fr] md:gap-16"
@@ -19,7 +19,7 @@ export default function Bio() {
             alt="Alpramir, cantautor y productor musical"
             fill
             sizes="(max-width: 768px) 100vw, 45vw"
-            className="object-cover object-top grayscale transition-[filter,transform] duration-700 ease-cinema group-hover:grayscale-0 group-hover:scale-[1.03]"
+            className="object-cover object-top transition-transform duration-700 ease-cinema group-hover:scale-[1.03]"
           />
         </div>
 

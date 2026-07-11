@@ -2,11 +2,12 @@
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { useMediaQuery } from '@/lib/useMediaQuery'
+import { gsap } from '@/lib/gsap'
 
 const PHOTOS = [
   { src: '/img-1.jpeg', alt: 'En un evento al aire libre' },
   { src: '/img-2.jpeg', alt: 'En el estudio' },
-  { src: '/img-3.jpeg', alt: 'Produciendo música' },
+  { src: '/img-3.jpeg', alt: 'Entrevista en la radio' },
 ]
 
 export default function HorizontalGallery() {
@@ -14,7 +15,7 @@ export default function HorizontalGallery() {
 
   return (
     <section id="fotos" className="bg-paper">
-      <div className="mx-auto max-w-6xl px-5 pt-24 sm:px-8 md:px-16 md:pt-36">
+      <div className="mx-auto max-w-6xl p-4 md:p-8">
         <span className="eyebrow">Fotos</span>
         <h2 className="mt-4 font-display text-4xl font-medium leading-[1.02] text-ink sm:text-5xl md:text-6xl">
           Detrás de la <span className="outline-type">música</span>
@@ -30,33 +31,43 @@ function DesktopTrack() {
   const wrapRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
 
+  // Horizontal scroll driven by GSAP ScrollTrigger — one batched ticker shared
+  // with the hero, geometry cached at refresh. No per-event getBoundingClientRect
+  // and nothing runs while the section is outside its active range. Progress is
+  // mapped across the CSS sticky's pinned travel (start top top → end bottom bottom),
+  // so the track and the sticky stay in sync (card widths are fixed at 58vw, so
+  // scrollWidth is stable and image loading can't stale the distance).
   useEffect(() => {
     const wrap = wrapRef.current
     const track = trackRef.current
     if (!wrap || !track) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
-    const clamp = (v: number) => Math.min(1, Math.max(0, v))
-    const update = () => {
-      const total = wrap.offsetHeight - window.innerHeight
-      const p = clamp(-wrap.getBoundingClientRect().top / total)
-      const max = track.scrollWidth - window.innerWidth
-      track.style.transform = `translateX(${-p * max}px)`
-    }
-    window.addEventListener('scroll', update, { passive: true })
-    window.addEventListener('resize', update)
-    update()
-    return () => {
-      window.removeEventListener('scroll', update)
-      window.removeEventListener('resize', update)
-    }
+    const ctx = gsap.context(() => {
+      gsap.to(track, {
+        x: () => -(track.scrollWidth - window.innerWidth),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: wrap,
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: true,
+          invalidateOnRefresh: true,
+          // Promote the track only while the section is active; release otherwise.
+          onToggle: (self) => {
+            track.style.willChange = self.isActive ? 'transform' : 'auto'
+          },
+        },
+      })
+    }, wrap)
+    return () => ctx.revert()
   }, [])
 
   return (
     <div ref={wrapRef} className="relative mt-12 h-[300vh]">
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-        <div ref={trackRef} className="flex gap-[3vw] px-[5vw] will-change-transform">
-          {PHOTOS.map((p, i) => (
+        <div ref={trackRef} className="flex gap-[3vw] px-[5vw]">
+          {PHOTOS.map((p) => (
             <figure
               key={p.src}
               className="group relative h-[68vh] w-[58vw] flex-none overflow-hidden rounded-sm border border-line"
@@ -66,10 +77,10 @@ function DesktopTrack() {
                 alt={p.alt}
                 fill
                 sizes="58vw"
-                className="object-cover grayscale transition-[filter] duration-700 ease-cinema group-hover:grayscale-0"
+                className="object-cover"
               />
               <figcaption className="absolute bottom-4 left-4 font-display text-lg text-paper drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]">
-                0{i + 1} · {p.alt}
+                {p.alt}
               </figcaption>
             </figure>
           ))}

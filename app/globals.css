@@ -58,10 +58,7 @@ body {
 
 /* ── Sticky-words act (pure-CSS highlight band, ported from shelf) ───── */
 .sticky-words {
-  --start: 50vh;
-  --space: 40vh;
-  --count: 6;
-  --dim: color-mix(in oklch, var(--color-ink), transparent 84%);
+  --dim: color-mix(in oklch, var(--color-ink), transparent 55%);
   --accent: var(--color-ink);
   background: var(--color-paper);
 }
@@ -69,28 +66,23 @@ body {
   font-family: var(--font-display), Georgia, serif;
   font-size: clamp(1.6rem, 5vw, 4.2rem);
   font-weight: 600;
-  line-height: 1.2;
-  position: sticky;
-  top: calc((var(--count) - 1) * -1lh);
+  line-height: 1.15;
   display: flex;
   align-items: start;
   width: 100%;
-  margin-bottom: var(--space);
 }
 .sticky-words .row {
   display: flex;
   width: 100%;
   align-items: start;
   justify-content: center;
-  padding-top: calc(var(--start) - 0.5lh);
   gap: 0.4ch;
 }
 .sticky-words .lead {
-  position: sticky;
-  top: calc(var(--start) - 0.5lh);
   margin: 0;
   font-weight: 600;
   white-space: nowrap;
+  color: var(--accent);
 }
 .sticky-words ul {
   list-style: none;
@@ -100,16 +92,7 @@ body {
 .sticky-words li {
   font-weight: 600;
   white-space: nowrap;
-  background: linear-gradient(
-    180deg,
-    var(--dim) 0 calc(var(--start) - 0.5lh),
-    var(--accent) calc(var(--start) - 0.55lh) calc(var(--start) + 0.55lh),
-    var(--dim) calc(var(--start) + 0.5lh)
-  );
-  background-attachment: fixed;
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
+  color: var(--dim);
 }
 .sr-only {
   position: absolute;
@@ -125,7 +108,6 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .sticky-words li { background: none; color: var(--color-ink); }
 }
 @media (hover: none) {
   html { scroll-behavior: auto; }

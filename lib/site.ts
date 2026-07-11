@@ -1,6 +1,9 @@
 // Single source of truth for Alpramir's content & links (extracted from alpramir.com).
 export const SITE = {
   name: 'Alpramir',
+  // Canonical production domain (used for metadata, sitemap, robots, OG image).
+  // Change this single value if the live domain differs.
+  url: 'https://alpramir.com',
   role: 'Cantautor y productor musical',
   location: 'España',
   tagline: 'Pop y baladas latinas sobre el amor, la fe y el día a día',

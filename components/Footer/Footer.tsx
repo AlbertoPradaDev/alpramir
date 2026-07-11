@@ -11,7 +11,7 @@ const SOCIALS = [
 
 export default function Footer() {
   return (
-    <footer className="bg-ink px-5 pt-20 pb-10 text-paper sm:px-8 md:px-16">
+    <footer className="bg-ink px-4 py-8 md:px-8 md:py-16 text-paper">
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col gap-12 md:flex-row md:items-start md:justify-between">
           <div>

@@ -4,7 +4,7 @@ const WORDS = ['amor.', 'la fe.', 'la amistad.', 'el día a día.', 'el pop.', '
 
 export default function StickyWords() {
   return (
-    <section className="sticky-words" aria-label="Canto sobre el amor, la fe, la amistad, el día a día, el pop y la balada latina">
+    <section className="sticky-words p-4 md:p-8" aria-label="Canto sobre el amor, la fe, la amistad, el día a día, el pop y la balada latina">
       <header className="head">
         <div className="row">
           <h2 className="lead">

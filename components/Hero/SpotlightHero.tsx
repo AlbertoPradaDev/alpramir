@@ -1,32 +1,9 @@
-'use client'
-import { useEffect, useRef } from 'react'
 import Image from 'next/image'
-import { gsap } from '@/lib/gsap'
 import Button from '@/components/ui/Button'
 import { SITE } from '@/lib/site'
 
-// Black theatrical stage: on first load the darkness lifts as a radial spotlight
-// (a transparent hole driven by --r) grows to reveal the caption.
+// Black theatrical stage: a radial spotlight (a transparent hole) reveals the caption.
 export default function SpotlightHero() {
-  const darkRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const el = darkRef.current
-    if (!el) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      gsap.set(el, { '--r': 82 })
-      return
-    }
-    const tween = gsap.fromTo(
-      el,
-      { '--r': 0 },
-      { '--r': 82, duration: 1.7, ease: 'power2.inOut', delay: 0.15 },
-    )
-    return () => {
-      tween.kill()
-    }
-  }, [])
-
   return (
     <section
       id="inicio"
@@ -78,21 +55,15 @@ export default function SpotlightHero() {
         </div>
       </div>
 
-      {/* The darkness — a radial hole (the spotlight) grows via --r to reveal the hero. */}
+      {/* The darkness — a radial hole (the spotlight) reveals the hero. */}
       <div
-        ref={darkRef}
         className="pointer-events-none absolute inset-0 z-20"
         style={{
-          // @ts-expect-error CSS custom property
-          '--r': 0,
           background:
-            'radial-gradient(circle at 50% 42%, transparent calc(var(--r, 0) * 1%), rgba(10,10,10,0.97) calc(var(--r, 0) * 1% + 28%))',
+            'radial-gradient(circle at 50% 42%, transparent 82%, rgba(10,10,10,0.97) 110%)',
         }}
       />
-
-      <span className="absolute bottom-6 left-1/2 z-30 -translate-x-1/2 text-[0.66rem] uppercase tracking-[0.25em] text-paper/45">
-        Desliza para descubrir
-      </span>
+      
     </section>
   )
 }

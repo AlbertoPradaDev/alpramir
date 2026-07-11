@@ -13,7 +13,7 @@ export default function Newsletter() {
   }
 
   return (
-    <section className="bg-paper px-5 py-24 sm:px-8 md:px-16 md:py-28">
+    <section className="bg-paper px-4 py-8 md:px-8 md:py-16">
       <SectionReveal
         variant="scale-in"
         className="mx-auto max-w-3xl rounded-sm border border-ink/15 px-6 py-14 text-center sm:px-12 md:py-16"

@@ -571,10 +571,6 @@ export default function SpotlightHero() {
             'radial-gradient(circle at 50% 42%, transparent calc(var(--r, 0) * 1%), rgba(10,10,10,0.97) calc(var(--r, 0) * 1% + 28%))',
         }}
       />
-
-      <span className="absolute bottom-6 left-1/2 z-30 -translate-x-1/2 text-[0.66rem] uppercase tracking-[0.25em] text-paper/45">
-        Desliza para descubrir
-      </span>
     </section>
   )
 }

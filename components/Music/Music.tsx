@@ -11,7 +11,7 @@ const PLATFORMS = [
 
 export default function Music() {
   return (
-    <section id="musica" className="bg-paper px-5 py-24 sm:px-8 md:px-16 md:py-36">
+    <section id="musica" className="bg-paper px-4 py-8 md:px-8 md:py-16">
       <SectionReveal variant="fade-rise" className="mx-auto max-w-6xl">
         <div data-reveal className="max-w-2xl">
           <span className="eyebrow">Música</span>

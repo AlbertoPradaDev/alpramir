@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { NAV_LINKS, SITE } from '@/lib/site'
+import { ScrollTrigger } from '@/lib/gsap'
 
 const DRAWER_LINKS = [...NAV_LINKS, { label: 'Spotify', href: SITE.social.spotify }]
 
@@ -10,11 +11,23 @@ export default function StaggeredNav() {
   const [overHero, setOverHero] = useState(true)
 
   // Bar text is light over the black hero, dark once scrolled onto the white body.
+  // Driven by a single ScrollTrigger (shared with the hero's batched ticker) that
+  // toggles only at the crossing point — no per-event offsetHeight read, and
+  // setState fires twice per full scroll instead of on every scroll event.
   useEffect(() => {
-    const onScroll = () => setOverHero(window.scrollY < window.innerHeight - 80)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    const el = document.getElementById('inicio')
+    if (!el) return
+    const st = ScrollTrigger.create({
+      trigger: el,
+      start: 'bottom-=80 top',
+      end: 'max',
+      // Active once scrolled past the hero → dark text on white. onToggle fires
+      // on the initial evaluation too, so the load state is correct (incl. a
+      // mid-page reload) without a synchronous setState in the effect body.
+      onToggle: (self) => setOverHero(!self.isActive),
+      invalidateOnRefresh: true,
+    })
+    return () => st.kill()
   }, [])
 
   // Lock body scroll + Esc-to-close while the drawer is open.
