@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from 'next'
-import { Fraunces, Inter } from 'next/font/google'
+import { EB_Garamond, Inter } from 'next/font/google'
 import './globals.css'
 import StaggeredNav from '@/components/Nav/StaggeredNav'
 import { SITE } from '@/lib/site'
 
-const fraunces = Fraunces({
+const ebGaramond = EB_Garamond({
   subsets: ['latin'],
-  variable: '--font-fraunces',
+  variable: '--font-eb-garamond',
   display: 'swap',
 })
 
@@ -109,7 +109,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${fraunces.variable} ${inter.variable} antialiased`}
+      className={`${ebGaramond.variable} ${inter.variable} antialiased`}
     >
       <body>
         <script

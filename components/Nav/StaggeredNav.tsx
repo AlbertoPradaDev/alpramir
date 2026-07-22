@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { NAV_LINKS, SITE } from '@/lib/site'
-import { ScrollTrigger } from '@/lib/gsap'
 
 const DRAWER_LINKS = [...NAV_LINKS, { label: 'Spotify', href: SITE.social.spotify }]
 
@@ -10,24 +9,19 @@ export default function StaggeredNav() {
   const [open, setOpen] = useState(false)
   const [overHero, setOverHero] = useState(true)
 
-  // Bar text is light over the black hero, dark once scrolled onto the white body.
-  // Driven by a single ScrollTrigger (shared with the hero's batched ticker) that
-  // toggles only at the crossing point — no per-event offsetHeight read, and
-  // setState fires twice per full scroll instead of on every scroll event.
+  // Bar text/background is light over the black hero, dark once the hero has
+  // scrolled past the bar. An IntersectionObserver on the hero (no scroll
+  // listener, no reflow) flips exactly when the hero's bottom crosses the nav
+  // line — and it fires on the initial observe, so the load state is correct.
   useEffect(() => {
     const el = document.getElementById('inicio')
     if (!el) return
-    const st = ScrollTrigger.create({
-      trigger: el,
-      start: 'bottom-=80 top',
-      end: 'max',
-      // Active once scrolled past the hero → dark text on white. onToggle fires
-      // on the initial evaluation too, so the load state is correct (incl. a
-      // mid-page reload) without a synchronous setState in the effect body.
-      onToggle: (self) => setOverHero(!self.isActive),
-      invalidateOnRefresh: true,
-    })
-    return () => st.kill()
+    const io = new IntersectionObserver(
+      ([entry]) => setOverHero(entry.isIntersecting),
+      { rootMargin: '-80px 0px 0px 0px', threshold: 0 },
+    )
+    io.observe(el)
+    return () => io.disconnect()
   }, [])
 
   // Lock body scroll + Esc-to-close while the drawer is open.
@@ -48,9 +42,16 @@ export default function StaggeredNav() {
 
   const barText = overHero && !open ? 'text-paper' : 'text-ink'
 
+  // Frosted bar: dark glass over the black hero, light glass over the white body.
+  const barBg = overHero
+    ? 'border-transparent bg-ink/20'
+    : 'border-line bg-paper/70'
+
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      <nav className="flex h-16 items-center justify-between px-5 sm:px-8 md:h-20 md:px-12 lg:px-16">
+      <nav
+        className={`flex h-16 items-center justify-between border-b px-5 backdrop-blur-md transition-[background-color,border-color] duration-300 sm:px-8 md:h-20 md:px-12 lg:px-16 ${barBg}`}
+      >
         <Link
           href="#inicio"
           aria-label="Alpramir — inicio"

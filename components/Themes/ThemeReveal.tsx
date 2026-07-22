@@ -6,7 +6,7 @@ import { useMediaQuery } from '@/lib/useMediaQuery'
 /**
  * Theme reveal — adapted from Shelf "Discipline reveal" (id 38) to Alpramir's
  * editorial black-and-white brand. A row of line-art thumbnails; activating one
- * grows its tile and reveals the theme in giant Fraunces type, letters clip-
+ * grows its tile and reveals the theme in giant display serif, letters clip-
  * revealing (sliding up) from the centre outward. Idle shows "CANTO".
  *
  * Desktop = hover to reveal. Mobile (coarse pointer) = tap to reveal/toggle.
